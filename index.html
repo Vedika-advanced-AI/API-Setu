@@ -3,86 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Setu - Holiday Notice</title>
+    <title>API Setu - Official Holiday Notice</title>
     <style>
+        :root {
+            --gov-blue: #0a2240;
+            --gov-accent: #0056b3;
+            --text-dark: #222222;
+            --bg-light: #f4f6f9;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Top Government Bar */
+        .gov-top-bar {
+            background-color: #f0f0f0;
+            font-size: 12px;
+            padding: 5px 20px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .gov-top-bar span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Main Header */
+        header {
+            background-color: #ffffff;
+            border-bottom: 3px solid var(--gov-accent);
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .gov-logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .brand-text h1 {
+            font-size: 22px;
+            margin: 0;
+            color: var(--gov-blue);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-text p {
+            font-size: 12px;
+            margin: 2px 0 0 0;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Main Content Area */
+        .main-container {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            color: #333;
+            padding: 40px 20px;
         }
-        .notice-container {
+
+        .notice-card {
             background-color: #ffffff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-            border-top: 5px solid #0056b3;
+            max-width: 600px;
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e1e4e8;
+            overflow: hidden;
         }
-        .logo {
-            width: 120px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-        h1 {
-            color: #2c3e50;
-            margin-top: 0;
-            font-size: 24px;
-        }
-        .holiday-message {
-            color: #d9534f;
-            font-size: 20px;
-            font-weight: bold;
-            margin: 25px 0 10px;
-        }
-        .reopen-message {
+
+        .card-header {
+            background-color: var(--gov-blue);
+            color: #ffffff;
+            padding: 15px 20px;
             font-size: 16px;
-            color: #555;
-            margin-bottom: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
         }
-        .divider {
-            border-top: 1px solid #eeeeee;
-            margin: 20px 0;
+
+        .card-body {
+            padding: 40px 30px;
+            text-align: center;
         }
-        .footer-link {
-            font-size: 14px;
+
+        .notice-icon {
+            font-size: 48px;
+            color: #d9534f;
+            margin-bottom: 15px;
         }
-        .footer-link a {
-            color: #0056b3;
-            text-decoration: none;
+
+        .holiday-title {
+            font-size: 22px;
+            color: #c9302c;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            line-height: 1.4;
+        }
+
+        .holiday-desc {
+            font-size: 16px;
+            color: #444;
+            margin: 0 0 30px 0;
+            line-height: 1.6;
             font-weight: 500;
         }
-        .footer-link a:hover {
+
+        .status-badge {
+            display: inline-block;
+            background-color: #fcf8e3;
+            border: 1px solid #fbeed5;
+            color: #c09853;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--gov-blue);
+            color: #ffffff;
+            padding: 25px 20px;
+            text-align: center;
+            font-size: 14px;
+            border-top: 4px solid var(--gov-accent);
+        }
+
+        .footer-links {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
             text-decoration: underline;
+        }
+
+        .copyright {
+            opacity: 0.6;
+            font-size: 12px;
         }
     </style>
 </head>
 <body>
 
-    <div class="notice-container">
-        <!-- Logo extracted from your link -->
-        <img src="https://directory.apisetu.gov.in/apisetu_logo.png" alt="API Setu Logo" class="logo">
-        
-        <h1>API Setu</h1>
-        
-        <p class="holiday-message">Today is a holiday on the account of Muharram.</p>
-        <p class="reopen-message">We will reopen tomorrow.</p>
-        
-        <div class="divider"></div>
-        
-        <!-- Terms and Conditions Link -->
-        <div class="footer-link">
-            <a href="https://www.meity.gov.in/terms-conditions" target="_blank" rel="noopener noreferrer">
-                Government Terms & Conditions
-            </a>
-        </div>
+    <div class="gov-top-bar">
+        <span>Ministry of Electronics & Information Technology, Government of India</span>
+        <span>Digital India Initiative</span>
     </div>
+
+    <header>
+        <div class="header-brand">
+            <img src="https://directory.apisetu.gov.in/apisetu_logo.png" alt="API Setu Logo" class="gov-logo">
+            <div class="brand-text">
+                <h1>API Setu</h1>
+                <p>National API Exchange Platform</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="notice-card">
+            <div class="card-header">
+                Official Notification
+            </div>
+            <div class="card-body">
+                <div class="notice-icon">🛑</div>
+                <h2 class="holiday-title">Today is a holiday on the account of Muharram.</h2>
+                <p class="holiday-desc">All online support operations and administrative services will remain suspended for the day.</p>
+                
+                <div class="status-badge">
+                    We will reopen on Monday.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="https://www.meity.gov.in/terms-conditions" target="_blank" rel="noopener noreferrer">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Helpdesk Support</a>
+        </div>
+        <div class="copyright">
+            &copy; 2026 API Setu, Ministry of Electronics & Information Technology, Government of India. All rights reserved.
+        </div>
+    </footer>
 
 </body>
 </html>
